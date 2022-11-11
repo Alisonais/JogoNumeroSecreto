@@ -43,9 +43,18 @@ function recebeValor(){
 function verificaSeChuteValido (chute){
     const numero = +chute;
     if (chuteForInvalido(numero)){
+        if(chute.toUpperCase()==="GAME OVER"){
+            document.body.innerHTML = `
+            <h1>GAME OVER!</h1>
+            <h3>Precione o botão para jogar novamente</h3>
+            <button id="jogarNovamente" class="btJogarNovamente">Jogar Novamente</button>
+            `
+            document.body.style.backgroundColor = "black"
+        } else {
         elementoChute.innerHTML += '<div>Valor inválido</div>'
-        return
+        }
     }
+
 
     if(NumeroMaiorMenor(numero)){
         elementoChute.innerHTML += `<div>O valor precisa estar entre ${menorValor} e ${maiorValor}</div>`
@@ -59,6 +68,7 @@ function verificaSeChuteValido (chute){
         <h3>foram ${contador} jogadas, Que tal um novo jogo?</h3>
         <button id="jogarNovamente" class="btJogarNovamente">Jogar Novamente</button>
         ` 
+        document.body.style.backgroundColor = "#54B435";
     }else if (numero > numeroSecreto){
         elementoChute.innerHTML += '<div>O número secreto é menor <i class="fa-solid fa-arrow-down-long"></i><br><br>digite a tecla Enter para tentar novamente</div>'
     } else {
@@ -97,4 +107,5 @@ function perdeu(){
     <h3>Não desista Tente novamente</h3>
     <button id="jogarNovamente" class="btJogarNovamente">Jogar Novamente</button>
     `
+    document.body.style.backgroundColor = "#D2001A";
 }
